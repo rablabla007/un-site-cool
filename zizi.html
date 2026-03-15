@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>wesh wesh canne a peche</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,900;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --cream: #f5f0e8;
+      --accent: #c8a96e;
+      --muted: #3a3a3a;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--cream);
+      font-family: 'DM Mono', monospace;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Grain texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 100;
+      opacity: 0.4;
+    }
+
+    .container {
+      text-align: center;
+      padding: 3rem;
+      max-width: 600px;
+      width: 100%;
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    .label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeIn 0.8s ease 0.3s forwards;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 8vw, 5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      margin-bottom: 3.5rem;
+      opacity: 0;
+      animation: slideUp 0.9s ease 0.5s forwards;
+    }
+
+    h1 em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--accent);
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+      padding: 1.4rem 0;
+      border-bottom: 1px solid var(--muted);
+      font-size: 1.05rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0;
+      transition: color 0.3s ease;
+    }
+
+    li:first-child { border-top: 1px solid var(--muted); }
+
+    li:nth-child(1) { animation: slideUp 0.7s ease 0.8s forwards; }
+    li:nth-child(2) { animation: slideUp 0.7s ease 1.0s forwards; }
+    li:nth-child(3) { animation: slideUp 0.7s ease 1.2s forwards; }
+
+    li:hover { color: var(--accent); }
+
+    .step-num {
+      font-size: 0.65rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      min-width: 1.5rem;
+    }
+
+    .loop-badge {
+      margin-top: 3rem;
+      display: inline-block;
+      border: 1px solid var(--muted);
+      padding: 0.5rem 1.2rem;
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+      opacity: 0;
+      animation: fadeIn 0.8s ease 1.6s forwards;
+    }
+
+    /* Decorative lines */
+    .deco {
+      position: fixed;
+      background: var(--muted);
+      opacity: 0.25;
+    }
+    .deco-v { width: 1px; height: 100vh; top: 0; }
+    .deco-h { height: 1px; width: 100vw; left: 0; }
+    .deco-v.left  { left: 8%; }
+    .deco-v.right { right: 8%; }
+    .deco-h.top   { top: 8%; }
+    .deco-h.bottom { bottom: 8%; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="deco deco-v left"></div>
+  <div class="deco deco-v right"></div>
+  <div class="deco deco-h top"></div>
+  <div class="deco deco-h bottom"></div>
+
+  <div class="container">
+    <p class="label">Manuel d'utilisation — Édition variable</p>
+    <h1>Instructions<br>de <em>ma vie</em></h1>
+    <ul>
+      <li><span class="step-num">01</span> naitre</li>
+      <li><span class="step-num">02</span> ne rien faire</li>
+      <li><span class="step-num">03</span> mourir</li>
+    </ul>
+    <span class="loop-badge">∞ &nbsp; une vie parfaite&nbsp; ∞</span>
+  </div>
+
+</body>
+</html>
